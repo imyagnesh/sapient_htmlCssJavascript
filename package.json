@@ -1,0 +1,42 @@
+{
+  "name": "sapient_htmlcssjavascript",
+  "version": "1.0.0",
+  "description": "Html, css , javascriot training",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack",
+    "start": "webpack serve --open",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/imyagnesh/sapient_htmlCssJavascript.git"
+  },
+  "keywords": [
+    "html5",
+    "css3",
+    "javasript",
+    "es6"
+  ],
+  "author": "Yagnesh Modh",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/imyagnesh/sapient_htmlCssJavascript/issues"
+  },
+  "homepage": "https://github.com/imyagnesh/sapient_htmlCssJavascript#readme",
+  "devDependencies": {
+    "@babel/core": "^7.17.10",
+    "@babel/preset-env": "^7.17.10",
+    "babel-loader": "^8.2.5",
+    "html-webpack-plugin": "^5.5.0",
+    "sass": "^1.51.0",
+    "sass-loader": "^12.6.0",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.72.0",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.8.1"
+  },
+  "dependencies": {
+    "css-loader": "^6.7.1"
+  }
+}
