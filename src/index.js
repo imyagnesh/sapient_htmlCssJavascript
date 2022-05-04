@@ -1,18 +1,10 @@
-import { message } from "./app";
-import "./style.css";
-import "./style.scss";
-
-const greet = "hello";
-
-class Animal {
-  sound() {
-    console.log("bow wow");
+const loadProducts = async () => {
+  try {
+    const res = await fetch(' http://localhost:3000/products');
+    const json = await res.json();
+  } catch (error) {
+    console.log(error);
   }
-}
+};
 
-const animal = new Animal();
-
-console.log(animal.sound());
-
-console.log(greet);
-console.log(message);
+loadProducts();
