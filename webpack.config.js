@@ -23,7 +23,12 @@ module.exports = {
       {
         test: /\.s[ac]ss$/i,
         exclude: /node_modules/,
-        use: ['style-loader', 'css-loader', 'sass-loader'],
+        use: ['style-loader', 'css-loader', 'sass-loader', 'postcss-loader'],
+      },
+      {
+        test: /\.(png|jpe?g|gif)$/i,
+        exclude: /node_modules/,
+        use: 'file-loader',
       },
     ],
   },
@@ -34,8 +39,9 @@ module.exports = {
     }),
   ],
   devServer: {
-    proxy: {
-      '/api': 'https://github.com',
+    static: {
+      directory: path.resolve(__dirname, './static'),
+      publicPath: '/static',
     },
   },
 };
