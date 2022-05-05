@@ -1,5 +1,5 @@
 module.exports = {
-  content: ['./src/**/*.js', './public/**/*.html'],
+  content: ['./src/**/*.{js,jsx}'],
   theme: {
     extend: {
       gridTemplateColumns: {
@@ -12,5 +12,5 @@ module.exports = {
       },
     },
   },
-  plugins: [require('@tailwindcss/line-clamp')],
+  plugins: [require('@tailwindcss/forms'), require('@tailwindcss/line-clamp')],
 };

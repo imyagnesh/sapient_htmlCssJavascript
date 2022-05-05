@@ -7,19 +7,3 @@
     @apply py-2 px-4 bg-blue-500 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:ring-opacity-75;
   }
 }
-
-.grid__item {
-  @apply flex flex-col w-full;
-}
-
-.grid__item__title {
-  @apply text-xl font-bold py-2 truncate;
-}
-
-.grid__item__desc {
-  @apply text-base bg-gray-200 line-clamp-3;
-}
-
-.grid__item__bottom {
-  @apply flex justify-between items-center py-3;
-}

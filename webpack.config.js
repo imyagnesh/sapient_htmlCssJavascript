@@ -2,16 +2,20 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 
 module.exports = {
-  entry: './src/index.js',
+  entry: './src/index.jsx',
   output: {
     path: path.resolve(__dirname, 'build'),
     filename: 'main.js',
+    publicPath: '/',
   },
   mode: 'development',
+  resolve: {
+    extensions: ['.js', '.jsx', '.json'],
+  },
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         use: 'babel-loader',
       },
@@ -30,6 +34,11 @@ module.exports = {
         exclude: /node_modules/,
         use: 'file-loader',
       },
+      {
+        test: /\.svg$/i,
+        issuer: /\.[jt]sx?$/,
+        use: ['@svgr/webpack'],
+      },
     ],
   },
   plugins: [
@@ -43,5 +52,6 @@ module.exports = {
       directory: path.resolve(__dirname, './static'),
       publicPath: '/static',
     },
+    historyApiFallback: true,
   },
 };
