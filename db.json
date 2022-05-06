@@ -1,4 +1,13 @@
 {
+  "users": [
+    {
+      "email": "yagnesh.modh@gmail.com",
+      "password": "$2a$10$klYNykdpPobii3g8l2/GJOvePxQRIMshIVVII3vkAmFcrtEh6o1pK",
+      "first_name": "YAGNESH",
+      "last_name": "MODH",
+      "id": 1
+    }
+  ],
   "categories": [
     {
       "name": "Beverages",

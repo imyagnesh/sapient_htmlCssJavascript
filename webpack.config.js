@@ -53,5 +53,7 @@ module.exports = {
       publicPath: '/static',
     },
     historyApiFallback: true,
+    open: true,
+    port: 8080,
   },
 };
