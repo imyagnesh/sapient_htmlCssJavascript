@@ -1,0 +1,50 @@
+// :root {
+//   --primary-color: #e7e7e7
+// }
+
+@use "base";
+@use "theme";
+@use "sass:math";
+
+header {
+  padding: 1rem 0;
+  background-color: #fff;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+
+  > .wrapper {
+    display: flex;
+    align-items: center;
+    @extend .container;
+    .logoImg {
+      height: 3rem;
+    }
+
+    nav {
+      flex: 1;
+      padding: 0 2rem;
+    }
+  }
+}
+
+main {
+  section#sign_up {
+    display: flex;
+    padding: 2rem 0;
+
+    div {
+      flex: 1;
+    }
+
+    h1 {
+      font-family: "poppinsbold", sans-serif;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    h2 {
+      font-family: "poppinsextralight", sans-serif;
+      font-size: 24px;
+      font-weight: bold;
+    }
+  }
+}
