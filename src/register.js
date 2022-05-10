@@ -141,9 +141,9 @@ class Register extends FormHandler {
     }
   };
 
-  submit(event) {
+  async submit(event) {
     super.submit(event);
-    this.submitForm();
+    await this.submitForm();
     this.clearForm();
   }
 }
