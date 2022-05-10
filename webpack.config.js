@@ -1,11 +1,16 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 
+const pages = ["index", "login", "register"];
+
 module.exports = {
-  entry: "./src/index.js",
+  entry: pages.reduce((p, c) => {
+    p[c] = `./src/${c}.js`;
+    return p;
+  }, {}),
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "bundle.js",
+    filename: "[name].js",
   },
   module: {
     rules: [
@@ -21,12 +26,21 @@ module.exports = {
       },
     ],
   },
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: "./public/index.html",
-      filename: "index.html",
-    }),
-  ],
+  optimization: {
+    splitChunks: {
+      chunks: "all",
+    },
+  },
+  plugins: [].concat(
+    pages.map(
+      (page) =>
+        new HtmlWebpackPlugin({
+          template: `./public/${page}.html`,
+          filename: `${page}.html`,
+          chunks: [page],
+        })
+    )
+  ),
   mode: "development",
   devServer: {
     static: {
