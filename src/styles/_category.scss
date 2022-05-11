@@ -1,0 +1,19 @@
+.category {
+  &__item {
+    display: flex;
+    align-items: center;
+    &:nth-child(odd) {
+      .category__content {
+        order: 1;
+      }
+    }
+  }
+  &__content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  &__img {
+  }
+}
