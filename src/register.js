@@ -33,7 +33,8 @@ class Register extends FormHandler {
       const { confirmPassword, ...rest } = this.fields;
       const res = await axiosInstance.post("register", rest);
       this.auth.storeToken(res);
-      history.pushState({ page: 1 }, "Home Page", "index.html");
+      history.replaceState({ page: 1 }, "Home Page", "index.html");
+      location.reload();
     } catch (error) {
       this.displayGlobalError(error.message);
     }

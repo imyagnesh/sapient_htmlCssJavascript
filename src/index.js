@@ -101,6 +101,7 @@ class Home {
 
       categoryImg.src = element.imageUrl;
       categoryImg.alt = element.name;
+      categoryImg.className = "category__img";
 
       categoryItem.appendChild(categoryContent);
       categoryItem.appendChild(categoryImg);
