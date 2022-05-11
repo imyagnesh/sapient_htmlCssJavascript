@@ -10,6 +10,13 @@
   transform: translateY(0);
 }
 
+.form-error {
+  font-size: 1.2rem;
+  color: theme.$error-color;
+  text-align: center;
+  padding: 1rem 0;
+}
+
 .form-field {
   display: block;
   margin-bottom: 1rem;

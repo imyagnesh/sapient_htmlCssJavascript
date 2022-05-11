@@ -6,4 +6,16 @@ const axiosInstance = axios.create({
   timeoutErrorMessage: "Timeout! try after some time",
 });
 
+axiosInstance.interceptors.response.use(
+  function (response) {
+    return response.data;
+  },
+  function (error) {
+    if (error?.response?.data) {
+      return Promise.reject(new Error(error?.response?.data));
+    }
+    return Promise.reject(error);
+  }
+);
+
 export default axiosInstance;
