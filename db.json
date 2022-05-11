@@ -2,10 +2,17 @@
   "users": [
     {
       "email": "yagnesh.modh@gmail.com",
-      "password": "$2a$10$dmp39h5URCj/4rEmMvGIkeThYAjh5hRkAHx7JYZFPERPR6HSVarI.",
+      "password": "$2a$10$LYZtcPL26.8pOympenb4Uur./oXOJ2nd4PjIYkpc9fdSPl.vgGN/.",
       "firstName": "YAGNESH",
       "lastName": "MODH",
       "id": 1
+    }
+  ],
+  "products": [
+    {
+      "id": 1,
+      "name": "iphone",
+      "price": "100000"
     }
   ]
 }

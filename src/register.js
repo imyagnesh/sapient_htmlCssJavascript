@@ -2,6 +2,7 @@ import { object, string, ref } from "yup";
 import axiosInstance from "./utils/axiosInstance";
 import FormHandler from "./utils/formHandler";
 import "./styles/index.scss";
+import Auth from "./auth";
 
 class Register extends FormHandler {
   constructor() {
@@ -24,13 +25,15 @@ class Register extends FormHandler {
       ),
     });
     super(inputElements, registerSchema);
+    this.auth = new Auth();
   }
 
   submitForm = async () => {
     try {
       const { confirmPassword, ...rest } = this.fields;
       const res = await axiosInstance.post("register", rest);
-      console.log(res);
+      this.auth.storeToken(res);
+      history.pushState({ page: 1 }, "Home Page", "index.html");
     } catch (error) {
       this.displayGlobalError(error.message);
     }
