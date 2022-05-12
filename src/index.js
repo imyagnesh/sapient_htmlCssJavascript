@@ -1,6 +1,17 @@
+const worker = new SharedWorker("assets/worker.js");
 import axiosInstance from "./utils/axiosInstance";
 import "./styles/home.scss";
 import Auth from "./auth";
+
+const calculateBtn = document.getElementById("calculate");
+
+calculateBtn.addEventListener("click", () => {
+  worker.port.postMessage("hello worker");
+});
+
+worker.port.onmessage = function (message) {
+  alert(`Sum is ${message.data}`);
+};
 
 class Home {
   banners = [];

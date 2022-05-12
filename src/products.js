@@ -1,35 +1,66 @@
-class Products {
-  products = [];
-  categories = [];
-  errors = {};
+const sharedWorker = new SharedWorker("assets/sharedWorker.js");
+const form = document.getElementById("chatForm");
 
-  constructor(props) {
-    this.loadData();
+const clearUl = () => {
+  const uls = document.getElementsByTagName("ul");
+  for (let i = 0; i < uls.length; i++) {
+    const element = uls[i];
+    element.remove();
   }
+};
 
-  loadData = async () => {
-    const res = await Promise.allSettled([
-      axiosInstance.get("products"),
-      axiosInstance.get("categories"),
-    ]);
+sharedWorker.port.onmessage = function (e) {
+  if (e.data && e.data.length > 0) {
+    clearUl();
 
-    if (res[0].status === "fulfilled") {
-      this.products = res[0].value;
-      this.createSwiper();
-    }
-    if (res[1].status === "fulfilled") {
-      this.categories = res[1].value;
-      this.displayCategories();
-    }
-    if (res[0].status === "rejected") {
-      this.errors["products"] = "Banners Data not available";
-    }
-    if (res[1].status === "rejected") {
-      this.errors["categories"] = "categories Data not available";
-    }
-  };
+    const ul = document.createElement("ul");
 
-  displayCategories() {}
+    for (let i = 0; i < e.data.length; i++) {
+      const element = e.data[i];
+      const li = document.createElement("li");
+      li.textContent = element;
+      ul.appendChild(li);
+    }
 
-  displayProducts() {}
-}
+    document.body.appendChild(ul);
+  } else {
+    // call api
+  }
+};
+
+const handleSendMessage = (e) => {
+  e.preventDefault();
+  const { value } = e.target.message;
+  sharedWorker.port.postMessage(value);
+  e.target.reset();
+  e.target.message.focus();
+};
+
+form.addEventListener("submit", handleSendMessage);
+
+// const calculateBtn = document.getElementById("calculate");
+// // var worker = new Worker("/assets/worker.js");
+
+// // worker.onmessage = function (e) {
+// //   console.log(e.data);
+// // };
+
+// // calculateBtn.addEventListener("click", () => {
+// //   worker.postMessage("hello worker");
+// // });
+
+// sharedWorker.port.onmessage = function (e) {
+//   console.log(e.data);
+// };
+
+// calculateBtn.addEventListener("click", () => {
+//   sharedWorker.port.postMessage("hello worker");
+// });
+
+// // bgChangeBtn.addEventListener("click", () => {
+// //   if (document.body.style.background === "red") {
+// //     document.body.style.background = "green";
+// //   } else {
+// //     document.body.style.background = "red";
+// //   }
+// // });
