@@ -1,5 +1,6 @@
 import axiosInstance from "./utils/axiosInstance";
 import "./styles/home.scss";
+import Auth from "./auth";
 
 class Home {
   banners = [];
@@ -13,8 +14,8 @@ class Home {
   loadData = async () => {
     try {
       const res = await Promise.allSettled([
-        axiosInstance.get("banners"),
-        axiosInstance.get("categories"),
+        axiosInstance.get("660/banners"),
+        axiosInstance.get("660/categories"),
       ]);
 
       if (res[0].status === "fulfilled") {
@@ -31,7 +32,9 @@ class Home {
       if (res[1].status === "rejected") {
         this.errors["categories"] = "categories Data not available";
       }
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   createSwiper = () => {
